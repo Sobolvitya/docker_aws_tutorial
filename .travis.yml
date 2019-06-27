@@ -7,4 +7,4 @@ before_install:
   - docker build -t sobolvitya/docker_aws_tutorial -f Dockerfile.dev .
 
 script:
-  - docker run sobolvitya/docker_aws_tutorial npm run test -- --coverage
+  - docker run -e CI=true sobolvitya/docker_aws_tutorial npm run test -- --coverage
