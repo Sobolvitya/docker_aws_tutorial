@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run -e CI=true sobolvitya/docker_aws_tutorial npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-aws-tutorial"
+  env: "DockerAwsTutorial-env"
+  bucket_name: "elasticbeanstalk-us-east-2-618903745116"
+  bucket_path: "docker-aws-tutorial"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
